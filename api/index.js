@@ -1,3 +1,3 @@
-import app from "../src/app.js";  // Import your Express app
+import app from "../src/app.js"; // Import the Express app
 
-export default app;  // Export the app for Vercel to handle it as a serverless function
+export default app; // Export the Express app for Vercel to use

@@ -11,14 +11,17 @@ app.use(express.json());
 // DB Connection
 connectDB();
 
+console.log("🚀 Database connected");
+
+app.get("/", (req, res) => {
+  res.send("Presale backend running 🚀");
+});
 // Routes
 app.use("/api/presale", require("./routes/presale.routes"));
 app.use("/api/queries", require("./routes/query.routes"));
 
 // Health check route
-app.get("/", (req, res) => {
-  res.send("Presale backend running 🚀");
-});
+
 
 // Export the app for serverless function on Vercel
 export default app; // We are now exporting the app instead of using app.listen()
