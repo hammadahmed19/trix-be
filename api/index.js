@@ -8,15 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// DB
+// DB connection
 connectDB();
 
-
-
-// Health check
+// Health check route
 app.get("/", (req, res) => {
   res.json({ status: "Backend running on Vercel 🚀" });
 });
 
-// ❌ DO NOT listen
+// Export the app for Vercel serverless functions
 export default app;
