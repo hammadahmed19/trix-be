@@ -1,7 +1,8 @@
 {
   "type": "module",
-  "scripts": {
-    "dev": "node api/index.js"
+   "scripts": {
+    "dev": "node src/app.js", // Start the app using Express (adjust path to your app file)
+    "start": "node src/app.js" // For production use; runs the same as dev in this case
   },
   "dependencies": {
     "express": "^4.22.1",

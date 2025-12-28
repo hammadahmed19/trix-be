@@ -1,6 +1,6 @@
-const express = require("express");
-const cors = require("cors");
-const rateLimit = require("express-rate-limit");
+import express from "express";
+import cors from "cors";
+import connectDB from "../config/db.js"; // Your DB connection logic
 
 const app = express();
 
@@ -8,22 +8,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rate limiting
-app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-  })
-);
+// DB Connection
+connectDB();
 
 // Routes
 app.use("/api/presale", require("./routes/presale.routes"));
 app.use("/api/queries", require("./routes/query.routes"));
 
-// Health check
+// Health check route
 app.get("/", (req, res) => {
-  res.send("Presale backend running");
+  res.send("Presale backend running 🚀");
 });
 
-// Export the app for Vercel serverless function (important change)
-module.exports = app;
+// Listen on port 3000 (or any port defined in your environment)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
