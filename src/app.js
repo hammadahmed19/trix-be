@@ -20,8 +20,5 @@ app.get("/", (req, res) => {
   res.send("Presale backend running 🚀");
 });
 
-// Listen on port 3000 (or any port defined in your environment)
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Export the app for serverless function on Vercel
+export default app; // We are now exporting the app instead of using app.listen()
